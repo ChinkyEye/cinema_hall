@@ -1,0 +1,38 @@
+#asidedesign{
+    background-color: #1a3652 !important;
+}
+#logobgside{
+    
+}
+.homeschool{
+    padding: 10px;
+    padding-left: 20px;
+    border-radius: 15px 50px 30px;
+    align-items: center;
+    width: 100%;
+    color: aliceblue;
+    background-color: #1a3652;
+    /* text-decoration: double; */
+    /* text-align: center; */
+    /* text-shadow: #1a3652; */
+    /* padding-top: 15px; */
+}
+#navside{
+
+
+}
+
+#hamropatro {
+   
+
+}
+#hamropatro h3{
+    font-size: 18px;
+    margin-left: 40px;
+    width: 200px;
+    color: white;
+    padding-left: 20px;
+    border-radius: 15px 50px 30px;
+    background-color: #1a3652;
+text-align: center;
+}

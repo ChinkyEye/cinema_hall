@@ -1,0 +1,59 @@
+
+@media print { 
+    @page{
+        size: A4 landscape;
+        margin-left:0.0cm;
+        margin-right:0.0cm;
+    }
+  }
+  #carddesign{
+    
+    border: 1px solid black;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    height: 85.6mm;
+    width: 54mm;
+    margin-bottom: 5rem;
+    margin-top: 1rem;
+  }
+  #cardstudentimg{ 
+    margin-top: -19px;
+  }
+  #idcardborder{
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  #schooladdress{
+    padding-left: 36px;
+  }
+  .cardcontent{
+    padding-left: 5px;
+  }
+  .cardcontent ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  .cardcontent ul li{
+
+  }
+  /* .imgsignature{
+    padding-right: 20px;
+  } */
+.cardfooter{
+  margin-top: -14px;
+    padding-right: 2px;
+    text-align: right;
+    color: white;
+    background: #000;
+}
+#idcardrow{
+    margin-left: 10px;
+}
+.cardhead {
+    
+    /* background-color: aqua; */
+}
+.imgsignature{
+  padding-right: 20px;
+  margin-top: 0px;
+}

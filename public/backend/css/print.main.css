@@ -1,0 +1,104 @@
+@media print{
+	.print-0{
+		display: none !important;
+	}
+  .print-1{
+    display: contents !important;
+  }
+  
+    .table-responsive, .print-header{
+      /*font-size: 20px;*/
+      /*transform: scale(1,1);*/
+      max-width: 100% !important;
+      /*display: block !important;*/
+    }
+    .th-sticky-top th {
+    	color: #000;
+	    position: static !important;
+	    top: 0px;
+	    /*box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);*/
+	    background-color: rgb(229, 40, 40) !important;
+	    z-index: 0;
+  	}
+    .bg-dark{
+    	background-color: red;
+    }
+    .heading{
+        margin: 0;
+        padding: 0;
+    }
+
+    table{
+      /*width: 135vw !important;*/
+    }
+
+    .table td {
+      /*padding: 1px !important;*/
+    }
+    .table th {
+    	/*border: 1px solid #000;*/
+      /*padding: 2px 3px !important;*/
+    }
+
+    @page {
+    }
+    /* Or: */
+    @page :left {
+      /*margin: 1cm;*/
+    }
+
+    @page :right {
+      /*margin: 4cm;*/
+    }
+
+    /* The first page of a print can be manipulated as well */
+    @page :first {
+      /*margin: 1cm 2cm;*/
+    }
+}
+
+
+
+/* admit card css minor changes  */
+#cardbody{
+  background-image: url('images/schoollogo.png');
+}
+
+#cardbody .row u {
+    
+    border-bottom: 1px dotted #000;
+    text-decoration: none;
+
+}
+#admitcard{
+  
+  border: 2px solid black;
+  margin-top: -20px;
+  margin-bottom: 5px;
+  padding: 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+  align-content: center;
+  margin: 115px;
+  border-radius: 50px 20px;
+  letter-spacing: .1rem;
+
+}
+.admitcarddetails{
+  float: left;
+  font-size:30px;
+  list-style: none;
+}
+.admitcarddetails li{
+  font-size:20px;
+}
+
+#cardprint{
+  
+  height: 516px;
+}
+.border {
+  border: 2px solid #000000!important;
+}
+
+
