@@ -42,10 +42,8 @@
                             <li><a href="">Triller movies</a></li>
                             <li><a href="">Romantic movies</a></li>
                             <li><a href="">Historical movies</a></li>
+                            <li><a href="">Animation movies</a></li>
                         </ul>
-                       <!-- @foreach($categories as $category) -->
-                            <!-- <li><a href="{{URL::to('/')}}/category/{{$category->slug}}">{{$category->name}}</a></li> -->
-                        <!-- @endforeach  -->
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -77,11 +75,7 @@
 
                                 <div class="carousel-inner" style="height: 500px;">
                                     <div class="carousel-item active h-100">
-                                        <img src="{{ URL::to('/') }}/images/slider/movie-poster.png"
-                                        class="d-block w-100 h-100"
-                                        style="object-fit: cover;"
-                                        alt="...">
-
+                                        <img src="{{ URL::to('/') }}/images/slider/movie-poster.png" class="d-block w-100 h-100" style="object-fit: cover;" alt="...">
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5>Movie</h5>
                                             <p>January 25.</p>

@@ -42,9 +42,9 @@
                 </div>
             </div>
             <div class="row">
-                    <strong>Copyright &copy; 2014-2019.</strong>
+                    <strong>Copyright &copy; 2024-2025.</strong>
                     
-                    <p>Developed By : <a href="http://www.techware.com.np" target="_blank">Techware Pvt. Ltd.</a></p>
+                    <!-- <p>Developed By : <a href="" target="_blank">Milan khimding</a></p> -->
             </div>
         </div>
     </footer>
