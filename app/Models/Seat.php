@@ -15,6 +15,7 @@ class Seat extends Model
         'column',
         'type',
         'is_occupied',
+        'movie_id',
         'group_id',
         'created_by',
     ];

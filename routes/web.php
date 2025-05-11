@@ -26,9 +26,12 @@ Route::namespace('App\Http\Controllers\User')->prefix('user')->name('user.')->mi
     Route::resource('task', TaskController::class );
     Route::patch('/task/{id}/toggle-status', [App\Http\Controllers\User\TaskController::class, 'toggleStatus'])->name('user.task.toggleStatus');
     Route::resource('movie', MovieController::class );
+    Route::get('/seat/{movie_id}', [App\Http\Controllers\User\SeatController::class, 'seating'])->name('seat.seating');
+    Route::get('/seat/create/{ids}', [App\Http\Controllers\User\SeatController::class, 'createSeat'])->name('seat.createSeating');
+    Route::resource('seat', SeatController::class );
 
 
 });
 Route::get('/', [App\Http\Controllers\Frontend\FrontController::class, 'index']);
-Route::get('/seat',[App\Http\Controllers\Frontend\SeatController::class, 'index'])->name('seat-show');
+Route::get('/seat/{id}',[App\Http\Controllers\Frontend\SeatController::class, 'show'])->name('seat-show');
 Route::post('/book-seats', [App\Http\Controllers\Frontend\BookingController::class, 'bookMultiple']);

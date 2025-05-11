@@ -4,7 +4,12 @@
   <div class="card">
     <div class="card-header">
       <div class="row">
-        <a href="{{ route('user.movie.create') }}" class="btn btn-sm btn-info text-capitalize rounded-0" data-toggle="tooltip" data-placement="top" title="Add Address">Add movie</a>
+        @if($seats_count == 0)
+        <a href="{{ route('user.seat.createSeating',['ids' => $movie_id]) }}" class="btn btn-sm btn-info text-capitalize rounded-0" data-toggle="tooltip" data-placement="top" title="Click to generate" >Click to Generate</a>
+        @else
+         <a href="{{ route('user.seat.createSeating',['ids' => $movie_id]) }}" class="btn btn-sm btn-info text-capitalize rounded-0 disabled" data-toggle="tooltip" data-placement="top" title="Click to generate" >Click to Generate</a>
+        @endif
+
       </div>
     </div>
     <div class="card-body">
@@ -13,33 +18,26 @@
           <thead class="bg-dark">
             <tr class="text-center">
               <th width="10">SN</th>
-              <th>Movie Name</th>
-              <th>Description</th>
-              <th>Image</th>
-              <th>Time</th>
-              <th>Seat</th>
+              <th>Seat No.</th>
+              <th>Category</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-          	@foreach($movies as $key=>$data)             
+             @foreach($seats as $key=>$data)             
             <tr class="text-center">
               <td>{{$key+1}}</td>
-              <td class="text-center">{{$data->name}}</td>
-              <td class="text-center">{{$data->description}}</td>
+              <td class="text-center"> R{{ $data->row }}C{{ $data->column }}</td>
+              <td class="text-center">{{$data->type}}</td>
               <td>
-              	<img src="{{ asset('images/slider/') . '/' . $data->image }}" alt="" class="responsive" width="50" height="50">
-              </td>
-              <td class="text-center">
-                <span class="badge badge-primary">{{ \Carbon\Carbon::parse($data->reminder)->format('Y-m-d') }} </span>
-                <span class="badge badge-secondary">{{ \Carbon\Carbon::parse($data->reminder)->format('h:i A') }}</span>
+                <a href="" data-placement="top" title="{{ $data->is_completed == '0' ? 'Click to Book' : 'Click to Unbook' }}">
+                  <i class="fa {{ $data->is_completed == '1' ? 'fa-check check-css' : 'fa-times cross-css' }}"></i>
+                </a>
               </td>
               <td>
-                <a href="{{ route('user.seat.seating',$data->id) }}" class="btn btn-xs btn-outline-info" data-placement="top" title="Seat"><i class="fas fa-chair"></i></a>
-              </td>
-              <td>
-                <a href="{{ route('user.movie.edit',$data->id) }}" class="btn btn-xs btn-outline-info" data-placement="top" title="Update"><i class="fas fa-edit"></i></a>
-                <form action="{{ route('user.movie.destroy',$data->id) }}" method="post" class="d-inline-block delete-confirm" data-placement="top" title="Permanent Delete">
+                <a href="{{ route('user.task.edit',$data->id) }}" class="btn btn-xs btn-outline-info" data-placement="top" title="Update"><i class="fas fa-edit"></i></a>
+                <form action="{{ route('user.task.destroy',$data->id) }}" method="post" class="d-inline-block delete-confirm" data-placement="top" title="Permanent Delete">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-xs btn-outline-danger" type="submit"><i class="fa fa-trash"></i></button>
@@ -49,7 +47,6 @@
             @endforeach
           </tbody>
         </table>
-
       </div>
     </div>
   </div>

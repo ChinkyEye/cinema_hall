@@ -85,14 +85,6 @@
                                         </div>
                                     </div>
                                     @endforeach
-                                    <!-- <div class="carousel-item active h-100">
-                                        <img src="{{ URL::to('/') }}/images/slider/movie-poster.png" class="d-block w-100 h-100" style="object-fit: cover;" alt="...">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h5>Movie</h5>
-                                            <p>January 25.</p>
-                                            <a href="{{ route('seat-show')}}" class="primary-btn">BOOK NOW</a>
-                                        </div>
-                                    </div> -->
                                 </div>
 
                                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">

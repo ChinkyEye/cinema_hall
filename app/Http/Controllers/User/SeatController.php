@@ -1,15 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\User;
 
-use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
-use Validator;
-use Auth;
-use Response;
+use Illuminate\Http\Request;
+use App\Models\Movie;
 use App\Models\Seat;
+use Auth;
 
 class SeatController extends Controller
 {
@@ -20,9 +17,16 @@ class SeatController extends Controller
      */
     public function index()
     {
-        $carts = [];
-        $seats = Seat::orderBy('row')->orderBy('column')->get()->groupBy('row');
-        return view('frontend.seat.show',compact('carts','seats'));
+
+    }
+
+    public function seating($id)
+    {
+        $movie_id = $id;
+        $seats = Seat::where('movie_id',$movie_id)->get();
+        $seats_count = count($seats);
+        // dd($seats_count);
+        return view('user.seat.index', compact('movie_id','seats','seats_count'));
     }
 
     /**
@@ -30,9 +34,43 @@ class SeatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function createSeat($movie_id)
+    {
+        $movie = Movie::findOrFail($movie_id);
+        $user = Auth::user();
+
+        for ($row = 1; $row <= 10; $row++) {
+            for ($col = 1; $col <= 12; $col++) {
+                $type = 'regular';
+
+                if ($row <= 2 && $col >= 4 && $col <= 9) {
+                    $type = 'vip';
+                }
+
+                if ($row % 2 == 0 && ($col == 1 || $col == 12 || $col == 6)) {
+                    $type = 'accessible';
+                }
+
+                Seat::create([
+                    'movie_id' => $movie->id,
+                    'row' => $row,
+                    'column' => $col,
+                    'type' => $type,
+                    'is_occupied' => false,
+                    'created_by' => $user->id,
+                ]);
+            }
+        }
+
+        return redirect()->back()->with('alert-success', 'Seats generated for ' . $movie->name);
+        // return redirect()->route('user.seat.index')->with($pass);
+
+
+
+    }
     public function create()
     {
-        //
+        dd("milan");
     }
 
     /**
@@ -43,10 +81,8 @@ class SeatController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
-
-
-
 
     /**
      * Display the specified resource.
@@ -56,14 +92,7 @@ class SeatController extends Controller
      */
     public function show($id)
     {
-        // dd($id);
-        $carts = [];
-        $seats = Seat::where('movie_id',$id)
-                        ->orderBy('row')
-                        ->orderBy('column')
-                        ->get()
-                        ->groupBy('row');
-        return view('frontend.seat.show',compact('carts','seats'));
+        //
     }
 
     /**
@@ -97,5 +126,6 @@ class SeatController extends Controller
      */
     public function destroy($id)
     {
+        //
     }
 }
