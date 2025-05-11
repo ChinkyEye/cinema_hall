@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Seat;
+use App\Models\Booking;
 use Auth;
 
 class SeatController extends Controller
@@ -127,5 +128,38 @@ class SeatController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function isActive(Request $request,$id)
+    {
+        $get_is_occupied = Seat::where('id',$id)
+                        ->value('is_occupied');
+        $isoccupied = Seat::find($id);
+        if($get_is_occupied == 0){
+            $isoccupied->is_occupied = 1;
+            $bookings = new Booking;
+            $bookings->seat_id = $id;
+            $bookings->user_id = Auth::user()->id;
+            $bookings->save();
+            $notification = array(
+              'message' => $isoccupied->name.' is Booked!',
+              'alert-type' => 'success'
+          );
+        }
+        else {
+            $isoccupied->is_occupied = 0;
+            $seats = Booking::where('seat_id',$id)->first();
+            $seats->delete();
+            $notification = array(
+              'message' => $isoccupied->name.' is Cancel!',
+              'alert-type' => 'error'
+          );
+        }
+        if(!($isoccupied->update())){
+            $notification = array(
+              'message' => 'data could not be changed!',
+              'alert-type' => 'error'
+          );
+        }
+        return back()->with($notification)->withInput();
     }
 }

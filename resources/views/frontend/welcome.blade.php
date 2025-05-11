@@ -81,7 +81,7 @@
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5>First slide label</h5>
                                             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                                            <a href="{{ route('seat-show', $data->id) }}" class="primary-btn">SHOP NOW</a>
+                                            <a href="{{ route('seat-show', $data->id) }}" class="primary-btn">BOOK NOW</a>
                                         </div>
                                     </div>
                                     @endforeach

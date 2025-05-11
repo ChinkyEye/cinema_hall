@@ -29,6 +29,7 @@ Route::namespace('App\Http\Controllers\User')->prefix('user')->name('user.')->mi
     Route::get('/seat/{movie_id}', [App\Http\Controllers\User\SeatController::class, 'seating'])->name('seat.seating');
     Route::get('/seat/create/{ids}', [App\Http\Controllers\User\SeatController::class, 'createSeat'])->name('seat.createSeating');
     Route::resource('seat', SeatController::class );
+    Route::get('seat/isactive/{id}', [App\Http\Controllers\User\SeatController::class, 'isActive'])->name('seat.active');
 
 
 });

@@ -31,8 +31,9 @@
               <td class="text-center"> R{{ $data->row }}C{{ $data->column }}</td>
               <td class="text-center">{{$data->type}}</td>
               <td>
-                <a href="" data-placement="top" title="{{ $data->is_completed == '0' ? 'Click to Book' : 'Click to Unbook' }}">
-                  <i class="fa {{ $data->is_completed == '1' ? 'fa-check check-css' : 'fa-times cross-css' }}"></i>
+                
+                <a href="{{ route('user.seat.active',$data->id)}}" data-placement="top" title="{{ $data->is_occupied == '0' ? 'Click to Book' : 'Click to Unbook' }}">
+                  <i class="fa {{ $data->is_occupied == '1' ? 'fa-check check-css' : 'fa-times cross-css' }}"></i>
                 </a>
               </td>
               <td>

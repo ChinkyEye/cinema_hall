@@ -36,6 +36,12 @@
         @endforeach
     </div>
     @endforeach
+    <div class="text-left mt-4">
+            <span class="badge badge-warning">VIP Seats</span><br>
+            <span class="badge badge-info text-white">Accessible Seats</span><br>
+            <span class="badge badge-dark">Occupied Seats</span><br>
+            <span class="badge badge-light border border-dark text-dark">Available Seats</span>
+    </div>
     <div class="text-center mt-4">
         <button id="bookSelected" class="btn btn-success" disabled>Book Selected Seats</button>
     </div>
@@ -79,6 +85,7 @@ document.querySelectorAll('.seat:not(.disabled)').forEach(button => {
 
 document.getElementById('bookSelected').addEventListener('click', function() {
     axios.post('/book-seats', {
+       user_id: "{{ Auth::user()->id }}",
         seat_ids: selectedSeats,
         _token: '{{ csrf_token() }}'
     })

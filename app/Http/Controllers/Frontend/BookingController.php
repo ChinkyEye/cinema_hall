@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Seat;
+use App\Models\User;
 use App\Models\Booking;
+use Auth;
 
 class BookingController extends Controller
 {
@@ -20,6 +22,7 @@ class BookingController extends Controller
     }
     public function bookMultiple(Request $request)
     {
+        // dd($request);
         $request->validate([
             'seat_ids' => 'required|array|min:1',
             'seat_ids.*' => 'exists:seats,id'
@@ -36,8 +39,8 @@ class BookingController extends Controller
         foreach ($seats as $seat) {
             $seat->update(['is_occupied' => true]);
             Booking::create([
-                'user_id' => $seat->created_by,
-                // 'user_id' => auth()->id(),
+                // 'user_id' => $seat->created_by,
+                'user_id' => $request->user_id,
                 'seat_id' => $seat->id,
             ]);
         }

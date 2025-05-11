@@ -98,4 +98,6 @@ class SeatController extends Controller
     public function destroy($id)
     {
     }
+
+    
 }
