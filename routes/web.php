@@ -27,3 +27,5 @@ Route::namespace('App\Http\Controllers\User')->prefix('user')->name('user.')->mi
     Route::patch('/task/{id}/toggle-status', [App\Http\Controllers\User\TaskController::class, 'toggleStatus'])->name('user.task.toggleStatus');
 });
 Route::get('/', [App\Http\Controllers\Frontend\FrontController::class, 'index']);
+Route::get('/seat',[App\Http\Controllers\Frontend\SeatController::class, 'index'])->name('seat-show');
+Route::post('/book-seats', [App\Http\Controllers\Frontend\BookingController::class, 'bookMultiple']);

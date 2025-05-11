@@ -79,7 +79,7 @@
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5>Movie</h5>
                                             <p>January 25.</p>
-                                            <a href="#" class="primary-btn">BOOK NOW</a>
+                                            <a href="{{ route('seat-show')}}" class="primary-btn">BOOK NOW</a>
                                         </div>
                                     </div>
                                 </div>

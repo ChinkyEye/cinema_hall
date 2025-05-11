@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Blog;
-use App\Category;
-use App\Cart;
+use Illuminate\Support\Facades\Input;
+use Validator;
 use Auth;
+use Response;
+use App\Models\Seat;
 
-class BlogController extends Controller
+class SeatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +20,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $carts = Cart::where('created_by',Auth::user()?Auth::user()->id : null)->get();
-        $categories = Category::get();
-        $blog =Blog::get();
-        return view('frontend.blog.index', compact('blog','categories','carts'));
+        $carts = [];
+        $seats = Seat::orderBy('row')->orderBy('column')->get()->groupBy('row');
+        return view('frontend.cart.show',compact('carts','seats'));
     }
 
     /**
@@ -31,9 +32,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $carts = Cart::where('created_by',Auth::user()->id)->get();
-        $blog = Blog::get();
-        return view('frontend.blog.show', compact('blog','carts'));
+        //
     }
 
     /**
@@ -44,8 +43,10 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -66,7 +67,7 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -89,6 +90,5 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }

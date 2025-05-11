@@ -2,57 +2,48 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Purchase;
-use App\Purchase_has_manage;
-use App\Cart;
-use Auth;
+use Illuminate\Http\Request;
+use App\Models\Seat;
+use App\Models\Booking;
 
-class todayPriceController extends Controller
+class BookingController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    // public function __construct(Request $request)
-    // {
-    //     $this->middleware('auth');
-    //     $this->request = $request;
-    // }
-
     public function index()
     {
         //
     }
+    public function bookMultiple(Request $request)
+    {
+        $request->validate([
+            'seat_ids' => 'required|array|min:1',
+            'seat_ids.*' => 'exists:seats,id'
+        ]);
 
-     public function todayPrice(){
-        $carts = Cart::get();
-        // $carts = Cart::where('created_by',Auth::user()->id)->get();
-        $carts = Cart::where('created_by',Auth::user() ? Auth::user()->id : null)->get();
-        $data_lists = Purchase::where('is_active','1')
-                    ->whereHas('getPurchaseMin', function($query){
-                           $query->where('is_active','1');
-                    })
-                    ->where('is_out','0')
-            ->orderBy('category_id','DESC')
-            ->paginate(42);
-        return view('frontend.today-price.index',compact('data_lists','carts'));
+        $seats = Seat::whereIn('id', $request->seat_ids)
+        ->where('is_occupied', false)
+        ->get();
 
-//         if($lang == 'en'){
-// // var_dump($data_lists); die();
-//         return view('manager.stock.index',compact('data_lists'));
-//         }
-//         elseif ($lang == 'plain') {
-//             return view('manager.stock.plain',compact('data_lists'));
-//         }
-//         else{
-//         return view('manager.stock.index_np',compact('data_lists'));
-//         }
+        if (count($seats) !== count($request->seat_ids)) {
+            return response()->json(['message' => 'One or more seats already booked.'], 409);
+        }
+
+        foreach ($seats as $seat) {
+            $seat->update(['is_occupied' => true]);
+            Booking::create([
+                'user_id' => $seat->created_by,
+                // 'user_id' => auth()->id(),
+                'seat_id' => $seat->id,
+            ]);
+        }
+
+        return response()->json(['message' => 'Seats booked successfully!']);
     }
-
 
     /**
      * Show the form for creating a new resource.
