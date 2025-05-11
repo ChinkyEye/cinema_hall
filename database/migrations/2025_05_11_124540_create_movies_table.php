@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeatsTable extends Migration
+class CreateMoviesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateSeatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('seats', function (Blueprint $table) {
+        Schema::create('movies', function (Blueprint $table) {
             $table->id();
-            $table->integer('row');
-            $table->integer('column');
-            $table->enum('type', ['regular', 'vip', 'accessible'])->default('regular');
-            $table->boolean('is_occupied')->default(false);
-            $table->unsignedBigInteger('group_id')->nullable();
+            $table->string("name");
+            $table->string("description");
+            $table->string('image')->nullable();
+            $table->datetime('start_at');
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users');
             $table->timestamps();
@@ -33,6 +32,6 @@ class CreateSeatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seats');
+        Schema::dropIfExists('movies');
     }
 }

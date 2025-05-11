@@ -20,7 +20,7 @@ class SeatSeeder extends Seeder
         $users = User::create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
-            'user_type' => '0', //for employee
+            'user_type' => '1', //for employee
             'password' => Hash::make('admin123'),
         ]);
 

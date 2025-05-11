@@ -20,10 +20,8 @@
                                     <div>{{Auth::user()->name}}</div>
                                     <span class="arrow_carrot-down"></span>
                                     <ul style="width: 200px">
-                                        <li><a href="{{ route('profile')}}"><i class="fa fa-users mr-2" aria-hidden="true"></i>Profile</a></li>
-                                        <!-- <li><a href="{{route('cart-show')}}"><i class="fa fa-shopping-cart mr-2" aria-hidden="true"></i>Cart</a></li>
-                                        <li><a href="{{ route('myOrder')}}"><i class="fa fa-shopping-basket mr-2" aria-hidden="true"></i>My Order</a></li> -->
-                                        <li><a href="{{route('change-password')}}"><i class="fa fa-unlock mr-2"></i>Change Password</a></li>
+                                        <li><a href=""><i class="fa fa-users mr-2" aria-hidden="true"></i>Profile</a></li>
+                                        <li><a href=""><i class="fa fa-unlock mr-2"></i>Change Password</a></li>
                                         <li>
                                             <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
@@ -65,13 +63,7 @@
                     </nav>
                 </div>
                 <div class="col-lg-2">
-                    @if(Auth::check())
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="{{URL::to('/')}}/cart"><i class="fa fa-shopping-bag"></i> <span>{{$carts->count()}}</span></a></li>
-                        </ul>
-                    </div>
-                    @endif
+                    
                 </div>
             </div>
             <div class="humberger__open">

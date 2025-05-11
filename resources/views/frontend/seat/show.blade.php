@@ -1,10 +1,24 @@
 @extends('frontend.app')
 @section('content')
 @include('frontend.header');
-
+<section class="breadcrumb-section set-bg" data-setbg="{{URL::to('/')}}/frontend/img/breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Booking Tickets/Seat Booking</h2>
+                    <div class="breadcrumb__option">
+                        <a href="./index.html">Home</a>
+                        <span>Tickets</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@auth
 <div class="container">
-    <h2 class="mb-4 text-center">Seat Booking</h2>
-
+    <h2 class="mb-4 text-center"></h2>
     @foreach($seats as $row => $cols)
     <div class="d-flex justify-content-center mb-2">
         @foreach($cols as $seat)
@@ -26,6 +40,12 @@
         <button id="bookSelected" class="btn btn-success" disabled>Book Selected Seats</button>
     </div>
 </div>
+@endauth
+@guest
+    <div class="alert alert-warning text-center">
+        Please log in first to access this content.
+    </div>
+@endguest
 
 @endsection
 @section('javascript')
@@ -41,6 +61,13 @@ document.querySelectorAll('.seat:not(.disabled)').forEach(button => {
             selectedSeats = selectedSeats.filter(id => id !== seatId);
             this.classList.remove('btn-primary');
         } else {
+
+             // Check if selecting this seat would leave a single gap
+            if (leavesSingleGap(seatId)) {
+                alert('You cannot leave a single seat gap.');
+                return;
+            }
+
             selectedSeats.push(seatId);
             this.classList.add('btn-primary');
         }
@@ -63,6 +90,29 @@ document.getElementById('bookSelected').addEventListener('click', function() {
         alert(error.response.data.message || 'Booking failed');
     });
 });
+
+// Function to check if seat selection leaves a single gap
+function leavesSingleGap(seatId) {
+    const allSeats = Array.from(document.querySelectorAll('.seat:not(.disabled)'));
+    const seatIndexes = allSeats.map(seat => parseInt(seat.dataset.seatId, 10));
+
+    const selectedIndexes = selectedSeats.map(id => parseInt(id, 10));
+    const currentIndex = parseInt(seatId, 10);
+
+    // Ensure sequential selection without leaving gaps
+    selectedIndexes.push(currentIndex);
+    selectedIndexes.sort((a, b) => a - b);
+
+    for (let i = 0; i < selectedIndexes.length - 1; i++) {
+        if (selectedIndexes[i + 1] - selectedIndexes[i] === 2) {
+            return true; // A single gap is found
+        }
+    }
+
+    return false;
+}
+
 </script>
+
 @endsection
 

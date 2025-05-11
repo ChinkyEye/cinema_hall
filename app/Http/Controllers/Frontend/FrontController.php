@@ -17,6 +17,7 @@ use App\User;
 use Auth;
 use Hash;
 use Response;
+use App\Models\Movie;
 
 class FrontController extends Controller
 {
@@ -40,11 +41,13 @@ class FrontController extends Controller
         //     ->orderBy('category_id','DESC')
         //     ->get();
         $sliders = [];
+        $movies  = Movie::get();
+        // dd($movies);
         $categories = [];
         $vegetables = [];
         $data_lists = [];
         $carts = [];
-        return view('frontend.welcome',compact('sliders','categories','vegetables','data_lists','carts'));
+        return view('frontend.welcome',compact('sliders','categories','vegetables','data_lists','carts','movies'));
     }
 
     /**

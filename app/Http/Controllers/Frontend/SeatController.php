@@ -22,7 +22,7 @@ class SeatController extends Controller
     {
         $carts = [];
         $seats = Seat::orderBy('row')->orderBy('column')->get()->groupBy('row');
-        return view('frontend.cart.show',compact('carts','seats'));
+        return view('frontend.seat.show',compact('carts','seats'));
     }
 
     /**

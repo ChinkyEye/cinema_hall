@@ -74,14 +74,25 @@
                                 </ol>
 
                                 <div class="carousel-inner" style="height: 500px;">
-                                    <div class="carousel-item active h-100">
+                                    @foreach($movies->take(3) as $data)
+                                    <div class="carousel-item @if($loop->first) active @endif" data-interval="3000">
+                                        <img src="{{URL::to('/')}}/images/slider/{{$data->image}}" class="d-block w-100" alt="..." style="width: 200px;height: 500px">
+
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>First slide label</h5>
+                                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                            <a href="{{ route('seat-show', $data->id) }}" class="primary-btn">SHOP NOW</a>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    <!-- <div class="carousel-item active h-100">
                                         <img src="{{ URL::to('/') }}/images/slider/movie-poster.png" class="d-block w-100 h-100" style="object-fit: cover;" alt="...">
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5>Movie</h5>
                                             <p>January 25.</p>
                                             <a href="{{ route('seat-show')}}" class="primary-btn">BOOK NOW</a>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -95,35 +106,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="row">
-                        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                            </ol>
-
-                            <div class="carousel-inner" style="height: 500px;">
-                                <div class="carousel-item active" data-interval="3000">
-                                    <img src="{{URL::to('/')}}/images/slider/movie-poster.png" class="d-block w-100" alt="..." style="width: 200px;height: 500px">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>First slide label</h5>
-                                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                                        <a href="#" class="primary-btn">BOOK NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div> -->
-
                 </div>
             </div>
         </div>
