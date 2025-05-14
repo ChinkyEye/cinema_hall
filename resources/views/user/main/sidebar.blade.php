@@ -15,9 +15,15 @@
     <nav class="mt-2">
        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
          <li class="nav-item">
-          <a href="{{ route('user.movie.index')}}" class="nav-link {{ (request()->is('user/task*')) ? 'active' : '' }}">
+          <a href="{{ route('user.movie.index')}}" class="nav-link {{ (request()->is('user/movie*')) ? 'active' : '' }}">
             <i class="fas fa-film"  aria-hidden="true"></i>
             <p>Movies</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('user.registeruser.index')}}" class="nav-link {{ (request()->is('user/registeruser*')) ? 'active' : '' }}">
+            <i class="fas fa-users"  aria-hidden="true"></i>
+            <p>Registered Users</p>
           </a>
         </li>
       </ul>

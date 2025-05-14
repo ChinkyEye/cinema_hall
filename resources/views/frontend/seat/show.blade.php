@@ -83,6 +83,7 @@ document.querySelectorAll('.seat:not(.disabled)').forEach(button => {
     });
 });
 
+@auth
 document.getElementById('bookSelected').addEventListener('click', function() {
     axios.post('/book-seats', {
        user_id: "{{ Auth::user()->id }}",
@@ -97,6 +98,7 @@ document.getElementById('bookSelected').addEventListener('click', function() {
         alert(error.response.data.message || 'Booking failed');
     });
 });
+@endauth
 
 // Function to check if seat selection leaves a single gap
 function leavesSingleGap(seatId) {

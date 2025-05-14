@@ -19,4 +19,8 @@ class Seat extends Model
         'group_id',
         'created_by',
     ];
+
+    public  function getMovieName(){
+        return $this->belongsTo(Movie::class,'movie_id');
+    }
 }

@@ -13,4 +13,11 @@ class Booking extends Model
         'seat_id',
         'user_id',
     ];
+    public  function getUserName(){
+        return $this->belongsTo(User::class,'user_id');
+    }
+    public  function getSeatName(){
+        return $this->belongsTo(Seat::class,'seat_id');
+    }
+
 }

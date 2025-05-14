@@ -30,6 +30,11 @@ Route::namespace('App\Http\Controllers\User')->prefix('user')->name('user.')->mi
     Route::get('/seat/create/{ids}', [App\Http\Controllers\User\SeatController::class, 'createSeat'])->name('seat.createSeating');
     Route::resource('seat', SeatController::class );
     Route::get('seat/isactive/{id}', [App\Http\Controllers\User\SeatController::class, 'isActive'])->name('seat.active');
+    Route::resource('registeruser', RegisterUserController::class );
+    Route::get('registeruser/{id}', [App\Http\Controllers\User\SeatController::class, 'isActive'])->name('registeruser.show');
+    Route::post('/registeruser/search', [App\Http\Controllers\User\RegisterUserController::class, 'user_search'])->name('user-search');
+
+
 
 
 });
