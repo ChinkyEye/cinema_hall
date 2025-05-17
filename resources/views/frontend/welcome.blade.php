@@ -64,8 +64,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container-fluid p-0"> <!-- Full-width container with no padding -->
-                        <div class="row no-gutters"> <!-- No spacing between columns -->
+                    <div class="container-fluid p-0"> 
+                        <div class="row no-gutters"> 
                             <div id="carouselExampleCaptions" class="carousel slide w-100" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
