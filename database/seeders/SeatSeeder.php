@@ -17,29 +17,24 @@ class SeatSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'user_type' => '1', //for employee
-            'password' => Hash::make('admin123'),
-        ]);
-
+        // $users = User::create([
+        //     'name' => 'admin',
+        //     'email' => 'admin@gmail.com',
+        //     'user_type' => '1', //for employee
+        //     'password' => Hash::make('admin123'),
+        // ]);
         // $user = User::first();
-
         // for ($row = 1; $row <= 10; $row++) {
         //     for ($col = 1; $col <= 12; $col++) {
         //         $type = 'regular';
-
-        //         // VIP: front middle seats
+        //         // for vip seating
         //         if ($row <= 2 && $col >= 4 && $col <= 9) {
         //             $type = 'vip';
         //         }
-
-        //         // Accessible: edges and middle of even rows
+        //         //for accessible: edges and middle of even rows
         //         if ($row % 2 == 0 && ($col == 1 || $col == 12 || $col == 6)) {
         //             $type = 'accessible';
         //         }
-
         //         Seat::create([
         //             'row' => $row,
         //             'column' => $col,
