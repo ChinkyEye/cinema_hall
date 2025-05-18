@@ -24,26 +24,35 @@
         @foreach($cols as $seat)
         @php
         $classes = 'seat btn mx-1';
-        if ($seat->is_occupied) $classes .= ' btn-dark disabled';
-        elseif ($seat->type == 'vip') $classes .= ' btn-warning';
-        elseif ($seat->type == 'accessible') $classes .= ' btn-info text-white';
-        else $classes .= ' btn-outline-secondary';
+        $icon = '';
+
+        if ($seat->is_occupied) {
+            $classes .= ' btn-dark disabled';
+        } elseif ($seat->type == 'vip') {
+            $classes .= ' btn-warning';
+            $icon = '<i class="fas fa-star text-white fa-sm"></i>'; 
+        } elseif ($seat->type == 'accessible') {
+            $classes .= ' btn-info text-white';
+            $icon = '<i class="fas fa-wheelchair fa-sm "></i>'; 
+        } else {
+            $classes .= ' btn-outline-secondary';
+        }
         @endphp
 
         <button class="{{ $classes }}" data-seat-id="{{ $seat->id }}" {{ $seat->is_occupied ? 'disabled' : '' }}>
-            R{{ $seat->row }}C{{ $seat->column }}
+           R{{ $seat->row }}C{{ $seat->column }}{!! $icon !!}
         </button>
         @endforeach
     </div>
     @endforeach
-    <div class="text-left mt-4">
-            <span class="badge badge-warning">VIP Seats</span><br>
-            <span class="badge badge-info text-white">Accessible Seats</span><br>
-            <span class="badge badge-dark">Occupied Seats</span><br>
-            <span class="badge badge-light border border-dark text-dark">Available Seats</span>
+    <div class="text-left mt-4 d-flex flex-wrap mt-5">
+            <span class="badge badge-warning mx-3">VIP Seats</span>
+            <span class="badge badge-info text-white mx-3">Accessible Seats</span>
+            <span class="badge badge-dark mx-3">Occupied Seats</span>
+            <span class="badge badge-light border border-dark text-dark mx-3">Available Seats</span>
     </div>
     <div class="text-center mt-4">
-        <button id="bookSelected" class="btn btn-success" disabled>Book Selected Seats</button>
+        <button id="bookSelected" class="btn btn-success" disabled>Book Seats</button>
     </div>
 </div>
 @endauth

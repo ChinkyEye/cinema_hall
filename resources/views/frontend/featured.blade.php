@@ -3,12 +3,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Coming Soon</h2>
+                        <h2>Coming Soon movies</h2>
                     </div>
                     <div class="featured__controls">
                         <ul>
                             <li class="active" data-filter="*">All</li>
-                            <!-- <li data-filter="">Cate1</li> -->
                         </ul>
                     </div>
                 </div>

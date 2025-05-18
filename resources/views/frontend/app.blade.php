@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token()}}">
 
+
     <title>Movie Ticket</title>
 
     <!-- Google Font -->
@@ -23,6 +24,8 @@
     <link rel="stylesheet" href="{{ URL::to('/')}}/frontend/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="{{ URL::to('/')}}/frontend/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="{{ URL::to('/')}}/frontend/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 
 </head>
 

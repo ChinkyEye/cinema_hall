@@ -4,7 +4,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="{{ URL::to('/')}}/frontend/img/movie-logo.png" alt="" style="width: 70px;height:50px "></a>
+                            <a href="#"><img src="{{ URL::to('/')}}/frontend/img/movie-logo.png" alt="" style="width: 70px;height:50px "></a>
                         </div>
                         <ul>
                             <li>Address: Feltham,London UK</li>

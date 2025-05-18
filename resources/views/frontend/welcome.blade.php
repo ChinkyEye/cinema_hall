@@ -79,8 +79,8 @@
                                         <img src="{{URL::to('/')}}/images/slider/{{$data->image}}" class="d-block w-100" alt="..." style="width: 200px;height: 500px">
 
                                         <div class="carousel-caption d-none d-md-block">
-                                            <h5>First slide label</h5>
-                                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                            <h5>{{$data->name}}</h5>
+                                            <p>{{$data->description}}</p>
                                             <a href="{{ route('seat-show', $data->id) }}" class="primary-btn">BOOK NOW</a>
                                         </div>
                                     </div>

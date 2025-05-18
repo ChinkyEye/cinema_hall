@@ -48,17 +48,17 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="{{ URL::to('/')}}/frontend/img/movie-logo.png" style="width: 70px;height: 50px" alt=""></a>
+                        <a href="#"><img src="{{ URL::to('/')}}/frontend/img/movie-logo.png" style="width: 70px;height: 50px" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="{{URL::to('/')}}">Home</a></li>
-                            <li><a href="{{URL::to('/')}}/price">Food & Drink</a></li>
-                            <li><a href="{{URL::to('/')}}/blog">Promos</a></li>
-                            <li><a href="{{URL::to('/')}}/contact">Theatres</a></li>
-                            <li><a href="{{URL::to('/')}}/contact">Contact</a></li>
+                            <li><a href="#">Food & Drink</a></li>
+                            <li><a href="#">Promos</a></li>
+                            <li><a href="#">Theatres</a></li>
+                            <li><a href="#">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
